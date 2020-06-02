@@ -1,5 +1,5 @@
 datasource DS {
-  provider = "sqlite"
+  provider = "postgresql"
   url = "***"
 }
 
@@ -8,9 +8,6 @@ generator client {
   binaryTargets = env("BINARY_TARGET")
 }
 
-// Define your own datamodels here and run `yarn redwood db save` to create
-// migrations for them.
-// TODO: Please remove the following example:
 model User {
   id         String  @default(cuid()) @id
   email      String  @unique
@@ -115,4 +112,12 @@ model Attendance {
   absentees  Profile[] @relation("AttendanceAbsentee", references: [id])
   groupId    String
   scheduleId String
+}
+
+model ReportQuest {
+  id String @default(cuid()) @id
+}
+
+model Report {
+  id String @default(cuid()) @id
 }

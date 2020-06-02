@@ -12,7 +12,7 @@
         "source": "DS"
       },
       "argument": "provider",
-      "value": "\"sqlite\""
+      "value": "\"postgresql\""
     },
     {
       "tag": "CreateArgument",
@@ -1996,6 +1996,100 @@
       "field": "scheduleId",
       "type": "String",
       "arity": "Required"
+    },
+    {
+      "tag": "CreateModel",
+      "model": "ReportQuest"
+    },
+    {
+      "tag": "CreateField",
+      "model": "ReportQuest",
+      "field": "id",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "ReportQuest",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "ReportQuest",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "ReportQuest",
+          "field": "id"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateModel",
+      "model": "Report"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Report",
+      "field": "id",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Report",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Report",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Report",
+          "field": "id"
+        },
+        "directive": "id"
+      }
     }
   ]
 }
