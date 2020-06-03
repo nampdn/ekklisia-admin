@@ -1,9 +1,10 @@
+import DashboardLayout from 'src/layouts/DashboardLayout'
+
 const HomePage = () => {
   return (
-    <div class="abc">
-      <h1>HomePage</h1>
-      <p>Find me in ./web/src/pages/HomePage/HomePage.js</p>
-    </div>
+    <DashboardLayout>
+      <h1>I'm Home</h1>
+    </DashboardLayout>
   )
 }
 
