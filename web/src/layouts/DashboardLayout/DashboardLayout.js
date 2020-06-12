@@ -17,6 +17,7 @@ const DashboardLayout = ({ children }) => {
         <div className="grid gap-2 mt-8">
           <MenuLink to={routes.home()}>Tổng Quan</MenuLink>
           <MenuLink to={routes.profiles()}>Danh sách ban viên</MenuLink>
+          <MenuLink to={routes.groups()}>Danh sách nhóm</MenuLink>
         </div>
       </div>
       <div className="flex flex-1 bg-gray-200 p-8 max-h-screen overflow-y-scroll">

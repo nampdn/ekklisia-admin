@@ -29,6 +29,12 @@ export const deleteGroup = ({ id }) => {
   })
 }
 
+export const upsertGroup = ({ input }) => {
+  return db.group.upsert({
+    where: { id },
+  })
+}
+
 export const Group = {
   profiles: (_obj, { root }) => db.group.findOne({ where: { id: root.id } }).profiles(),
   profile: (_obj, { root }) => db.group.findOne({ where: { id: root.id } }).profile(),

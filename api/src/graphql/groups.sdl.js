@@ -8,8 +8,8 @@ export const schema = gql`
     members: Profile
     startAt: DateTime
     endAt: DateTime
-    createdAt: DateTime!
-    updatedAt: DateTime!
+    createdAt: DateTime
+    updatedAt: DateTime
     leader: Profile
     leaderId: String
     Org: Org
@@ -29,7 +29,7 @@ export const schema = gql`
     stage: String
     startAt: DateTime
     endAt: DateTime
-    updatedAt: DateTime!
+    updatedAt: DateTime
     leaderId: String
     orgId: String
   }

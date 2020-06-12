@@ -1,6 +1,6 @@
 datasource DS {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -54,10 +54,10 @@ model Group {
   startAt     DateTime?
   endAt       DateTime?
   createdAt   DateTime          @default(now())
-  updatedAt   DateTime          @updatedAt @default(now())
+  updatedAt   DateTime?         @updatedAt @default(now())
   leader      Profile?          @relation("GroupLeader", fields: [leaderId], references: [id])
   leaderId    String?
-  org         Org?              @relation(fields: [orgId], references: [id])
+  Org         Org?              @relation(fields: [orgId], references: [id])
   orgId       String?
   attendances Attendance[]      @relation("AttendanceGroup")
   enrollment  GroupEnrollment[]
