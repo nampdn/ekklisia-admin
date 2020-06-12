@@ -11,14 +11,14 @@ const ProfilesLayout = (props) => {
                 to={routes.profiles()}
                 className="rw-link"
               >
-                Profiles
+                Danh sách ban viên
               </Link>
             </h1>
             <Link
               to={routes.newProfile()}
               className="rw-button rw-button-green"
             >
-              <div className="rw-button-icon">+</div> New Profile
+              <div className="rw-button-icon">+</div> Thêm ban viên
             </Link>
           </header>
           <main className="rw-main">{props.children}</main>

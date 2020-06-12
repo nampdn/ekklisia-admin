@@ -1,5 +1,9 @@
 import { useMutation } from '@redwoodjs/web'
 import { Link, routes } from '@redwoodjs/router'
+import * as dayjs from 'dayjs'
+import 'dayjs/locale/vi' // load on demand
+
+dayjs.locale('vi');
 
 const DELETE_PROFILE_MUTATION = gql`
   mutation DeleteProfileMutation($id: String!) {
@@ -27,6 +31,12 @@ const timeTag = (datetime) => {
   )
 }
 
+const buildAvatarUrl = (id, fid) =>
+    fid
+      ? `https://graph.facebook.com/v6.0/${fid}/picture`
+      : `https://api.adorable.io/avatars/285/${id}.png`
+
+
 const ProfilesList = ({ profiles }) => {
   const [deleteProfile] = useMutation(DELETE_PROFILE_MUTATION)
 
@@ -36,72 +46,59 @@ const ProfilesList = ({ profiles }) => {
     }
   }
 
+  console.log(dayjs, profiles);
+
   return (
     <div className="rw-segment rw-table-wrapper-responsive">
       <table className="rw-table">
         <thead>
           <tr>
-            <th>id</th>
-            <th>fullName</th>
-            <th>gender</th>
-            <th>oldId</th>
-            <th>slug</th>
-            <th>email</th>
-            <th>facebookId</th>
-            <th>phoneNumber</th>
-            <th>birthday</th>
-            <th>joinDate</th>
-            <th>dayOfBirth</th>
-            <th>monthOfBirth</th>
-            <th>yearOfBirth</th>
-            <th>createdAt</th>
-            <th>updatedAt</th>
-            <th>orgId</th>
+            <th>Họ và tên</th>
+            <th>Giới tính</th>
+            <th>Liên hệ</th>
+            <th>Sinh nhật</th>
+            <th>Ngày vào</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>
           {profiles.map((profile) => (
             <tr key={profile.id}>
-              <td>{truncate(profile.id)}</td>
-              <td>{truncate(profile.fullName)}</td>
+              <td>
+                <div class="flex overflow-hidden">
+                  <img
+                    class="inline-block h-6 w-6 rounded-full text-white shadow-solid"
+                    src={buildAvatarUrl(profile.id, profile.facebookId)} alt="" />
+                  <span class="pl-4">{truncate(profile.fullName)}</span>
+                </div>
+              </td>
               <td>{truncate(profile.gender)}</td>
-              <td>{truncate(profile.oldId)}</td>
-              <td>{truncate(profile.slug)}</td>
-              <td>{truncate(profile.email)}</td>
-              <td>{truncate(profile.facebookId)}</td>
               <td>{truncate(profile.phoneNumber)}</td>
-              <td>{timeTag(profile.birthday)}</td>
-              <td>{timeTag(profile.joinDate)}</td>
-              <td>{truncate(profile.dayOfBirth)}</td>
-              <td>{truncate(profile.monthOfBirth)}</td>
-              <td>{truncate(profile.yearOfBirth)}</td>
-              <td>{timeTag(profile.createdAt)}</td>
-              <td>{timeTag(profile.updatedAt)}</td>
-              <td>{truncate(profile.orgId)}</td>
+              <td>{profile.birthday ? dayjs(profile.birthday).format("DD/MM/YYYY") : null}</td>
+              <td>{profile.joinDate ? dayjs(profile.joinDate).format("DD/MM/YYYY") : null}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link
                     to={routes.profile({ id: profile.id })}
-                    title={'Show profile ' + profile.id + ' detail'}
+                    title={'Xem hồ sơ ' + profile.fullName}
                     className="rw-button rw-button-small"
                   >
-                    Show
+                    Xem
                   </Link>
                   <Link
                     to={routes.editProfile({ id: profile.id })}
-                    title={'Edit profile ' + profile.id}
+                    title={'Sửa hồ sơ ' + profile.fullName}
                     className="rw-button rw-button-small rw-button-blue"
                   >
-                    Edit
+                    Sửa
                   </Link>
                   <a
                     href="#"
-                    title={'Delete profile ' + profile.id}
+                    title={'Xóa hồ sơ ' + profile.fullName}
                     className="rw-button rw-button-small rw-button-red"
                     onClick={() => onDeleteClick(profile.id)}
                   >
-                    Delete
+                    Xóa
                   </a>
                 </nav>
               </td>

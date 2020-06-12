@@ -42,7 +42,6 @@ export const schema = gql`
     dayOfBirth: Int
     monthOfBirth: Int
     yearOfBirth: Int
-    updatedAt: DateTime!
     orgId: String
   }
 
@@ -59,7 +58,6 @@ export const schema = gql`
     dayOfBirth: Int
     monthOfBirth: Int
     yearOfBirth: Int
-    updatedAt: DateTime
     orgId: String
   }
 

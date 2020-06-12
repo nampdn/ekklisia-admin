@@ -6,7 +6,6 @@ export const QUERY = gql`
       id
       fullName
       gender
-      oldId
       slug
       email
       facebookId
@@ -16,9 +15,6 @@ export const QUERY = gql`
       dayOfBirth
       monthOfBirth
       yearOfBirth
-      createdAt
-      updatedAt
-      orgId
     }
   }
 `

@@ -12,11 +12,11 @@ const MenuLink = ({to, children}) => (
 const DashboardLayout = ({ children }) => {
   return (
     <div className="flex flex-row">
-      <div className="flex flex-col bg-gray-400 py-4 px-2 h-screen">
+      <div className="flex flex-col bg-gray-600 py-4 px-2 h-screen">
         <p className="px-8 text-green-500 text-3xl font-bold">Admin</p>
         <div className="grid gap-2 mt-8">
           <MenuLink to={routes.home()}>Tổng Quan</MenuLink>
-          <MenuLink to={routes.profiles()}>Profiles</MenuLink>
+          <MenuLink to={routes.profiles()}>Danh sách ban viên</MenuLink>
         </div>
       </div>
       <div className="flex flex-1 bg-gray-200 p-8 max-h-screen overflow-y-scroll">

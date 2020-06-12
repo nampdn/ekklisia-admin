@@ -32,26 +32,14 @@ const Profile = ({ profile }) => {
         <table className="rw-table">
           <tbody>
             <tr>
-              <th>id</th>
-              <td>{profile.id}</td>
-            </tr><tr>
               <th>fullName</th>
               <td>{profile.fullName}</td>
             </tr><tr>
               <th>gender</th>
               <td>{profile.gender}</td>
             </tr><tr>
-              <th>oldId</th>
-              <td>{profile.oldId}</td>
-            </tr><tr>
-              <th>slug</th>
-              <td>{profile.slug}</td>
-            </tr><tr>
               <th>email</th>
               <td>{profile.email}</td>
-            </tr><tr>
-              <th>facebookId</th>
-              <td>{profile.facebookId}</td>
             </tr><tr>
               <th>phoneNumber</th>
               <td>{profile.phoneNumber}</td>
@@ -71,14 +59,8 @@ const Profile = ({ profile }) => {
               <th>yearOfBirth</th>
               <td>{profile.yearOfBirth}</td>
             </tr><tr>
-              <th>createdAt</th>
-              <td>{profile.createdAt}</td>
-            </tr><tr>
               <th>updatedAt</th>
               <td>{profile.updatedAt}</td>
-            </tr><tr>
-              <th>orgId</th>
-              <td>{profile.orgId}</td>
             </tr>
           </tbody>
         </table>
