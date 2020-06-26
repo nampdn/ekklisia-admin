@@ -13,6 +13,7 @@ export const schema = gql`
   }
 
   input CreateOrgInput {
+    id: String
     name: String!
   }
 

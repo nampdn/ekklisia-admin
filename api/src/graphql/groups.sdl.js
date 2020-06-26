@@ -5,14 +5,14 @@ export const schema = gql`
     slug: String
     year: Int
     stage: String
-    members: Profile
+    members: [Profile!]
     startAt: DateTime
     endAt: DateTime
     createdAt: DateTime
     updatedAt: DateTime
     leader: Profile
     leaderId: String
-    Org: Org
+    org: Org
     orgId: String
     attendances: Attendance
   }
@@ -23,6 +23,7 @@ export const schema = gql`
   }
 
   input CreateGroupInput {
+    id: String
     name: String!
     slug: String
     year: Int
@@ -32,12 +33,13 @@ export const schema = gql`
     updatedAt: DateTime
     leaderId: String
     orgId: String
+    members: String
   }
 
   input UpdateGroupInput {
     name: String
     slug: String
-    year: Int
+    year: String
     stage: String
     startAt: DateTime
     endAt: DateTime

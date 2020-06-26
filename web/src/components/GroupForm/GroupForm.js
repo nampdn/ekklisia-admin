@@ -67,6 +67,7 @@ const GroupForm = (props) => {
           className="rw-input"
           errorClassName="rw-input rw-input-error"
           validation={{ required: true }}
+          type="number"
         />
         <FieldError name="year" className="rw-field-error" />
 
@@ -85,70 +86,6 @@ const GroupForm = (props) => {
           validation={{ required: true }}
         />
         <FieldError name="stage" className="rw-field-error" />
-
-        <Label
-          name="startAt"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Start at
-        </Label>
-        <TextField
-          name="startAt"
-          defaultValue={props.group?.startAt}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-        <FieldError name="startAt" className="rw-field-error" />
-
-        <Label
-          name="endAt"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          End at
-        </Label>
-        <TextField
-          name="endAt"
-          defaultValue={props.group?.endAt}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-        <FieldError name="endAt" className="rw-field-error" />
-
-        <Label
-          name="leaderId"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Leader id
-        </Label>
-        <TextField
-          name="leaderId"
-          defaultValue={props.group?.leaderId}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-        <FieldError name="leaderId" className="rw-field-error" />
-
-        <Label
-          name="orgId"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Org id
-        </Label>
-        <TextField
-          name="orgId"
-          defaultValue={props.group?.orgId}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-        <FieldError name="orgId" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit

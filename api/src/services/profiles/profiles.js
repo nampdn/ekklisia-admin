@@ -1,4 +1,5 @@
 import { db } from 'src/lib/db'
+import { remapRelationFields } from 'src/lib/helpers'
 
 export const profiles = () => {
   return db.profile.findMany()
@@ -11,8 +12,11 @@ export const profile = ({ id }) => {
 }
 
 export const createProfile = ({ input }) => {
+  const patchedInput = remapRelationFields(input, {
+    orgId: 'org'
+  })
   return db.profile.create({
-    data: input,
+    data: patchedInput,
   })
 }
 

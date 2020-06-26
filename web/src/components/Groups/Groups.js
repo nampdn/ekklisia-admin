@@ -41,34 +41,18 @@ const GroupsList = ({ groups }) => {
       <table className="rw-table">
         <thead>
           <tr>
-            <th>id</th>
             <th>name</th>
-            <th>slug</th>
-            <th>year</th>
-            <th>stage</th>
-            <th>startAt</th>
-            <th>endAt</th>
-            <th>createdAt</th>
-            <th>updatedAt</th>
             <th>leaderId</th>
-            <th>orgId</th>
+            <th>year</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>
           {groups.map((group) => (
             <tr key={group.id}>
-              <td>{truncate(group.id)}</td>
               <td>{truncate(group.name)}</td>
-              <td>{truncate(group.slug)}</td>
+              <td>{truncate(group.leader ? group.leader.fullName : "")}</td>
               <td>{truncate(group.year)}</td>
-              <td>{truncate(group.stage)}</td>
-              <td>{timeTag(group.startAt)}</td>
-              <td>{timeTag(group.endAt)}</td>
-              <td>{timeTag(group.createdAt)}</td>
-              <td>{timeTag(group.updatedAt)}</td>
-              <td>{truncate(group.leaderId)}</td>
-              <td>{truncate(group.orgId)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

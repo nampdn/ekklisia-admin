@@ -1,7 +1,8 @@
 import { db } from 'src/lib/db'
+import { remapRelationFields, remapFields } from 'src/lib/helpers'
 
 export const groups = () => {
-  return db.group.findMany()
+  return db.group.findMany({ orderBy: { name: 'asc' } })
 }
 
 export const group = ({ id }) => {
@@ -11,14 +12,31 @@ export const group = ({ id }) => {
 }
 
 export const createGroup = ({ input }) => {
-  return db.group.create({
-    data: input,
+  const patchedInput = remapRelationFields(input, {
+    orgId: 'org',
+    leaderId: 'leader',
+    members: {
+      field: 'members',
+      reference: 'id',
+      map: (data) => JSON.parse(data),
+    },
+  })
+  if (patchedInput.id) {
+    return db.group.create(patchedInput)
+  }
+  return db.group.upsert({
+    where: { id: patchedInput.id },
+    create: patchedInput,
+    update: patchedInput,
   })
 }
 
 export const updateGroup = ({ id, input }) => {
+  const patchedInput = remapFields(input, {
+    year: (x) => parseInt(x),
+  })
   return db.group.update({
-    data: input,
+    data: patchedInput,
     where: { id },
   })
 }
@@ -36,9 +54,13 @@ export const upsertGroup = ({ input }) => {
 }
 
 export const Group = {
-  profiles: (_obj, { root }) => db.group.findOne({ where: { id: root.id } }).profiles(),
-  profile: (_obj, { root }) => db.group.findOne({ where: { id: root.id } }).profile(),
+  members: (_obj, { root }) =>
+    db.group.findOne({ where: { id: root.id } }).members(),
+  leader: (_obj, { root }) =>
+    db.group.findOne({ where: { id: root.id } }).leader(),
   org: (_obj, { root }) => db.group.findOne({ where: { id: root.id } }).org(),
-  attendances: (_obj, { root }) => db.group.findOne({ where: { id: root.id } }).attendances(),
-  groupEnrollments: (_obj, { root }) => db.group.findOne({ where: { id: root.id } }).groupEnrollments(),
+  attendances: (_obj, { root }) =>
+    db.group.findOne({ where: { id: root.id } }).attendances(),
+  groupEnrollments: (_obj, { root }) =>
+    db.group.findOne({ where: { id: root.id } }).groupEnrollments(),
 }

@@ -7,15 +7,10 @@ export const QUERY = gql`
     groups {
       id
       name
-      slug
       year
-      stage
-      startAt
-      endAt
-      createdAt
-      updatedAt
-      leaderId
-      orgId
+      leader {
+        fullName
+      }
     }
   }
 `
