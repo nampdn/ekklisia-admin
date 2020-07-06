@@ -8,6 +8,9 @@ export const QUERY = gql`
       id
       name
       year
+      members {
+        id
+      }
       leader {
         fullName
       }

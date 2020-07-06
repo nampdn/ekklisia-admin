@@ -41,9 +41,10 @@ const GroupsList = ({ groups }) => {
       <table className="rw-table">
         <thead>
           <tr>
-            <th>name</th>
-            <th>leaderId</th>
-            <th>year</th>
+            <th>Tên nhóm</th>
+            <th>Nhóm trưởng</th>
+            <th>Số thành viên</th>
+            <th>Năm</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -52,6 +53,7 @@ const GroupsList = ({ groups }) => {
             <tr key={group.id}>
               <td>{truncate(group.name)}</td>
               <td>{truncate(group.leader ? group.leader.fullName : "")}</td>
+              <td>{truncate(group.members.length)}</td>
               <td>{truncate(group.year)}</td>
               <td>
                 <nav className="rw-table-actions">
