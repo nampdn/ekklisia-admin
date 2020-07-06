@@ -12,7 +12,7 @@
         "source": "DS"
       },
       "argument": "provider",
-      "value": "\"postgresql\""
+      "value": "\"mysql\""
     },
     {
       "tag": "CreateArgument",
@@ -21,7 +21,7 @@
         "source": "DS"
       },
       "argument": "url",
-      "value": "env(\"DATABASE_URL\")"
+      "value": "\"***\""
     },
     {
       "tag": "CreateModel",
@@ -619,7 +619,7 @@
     {
       "tag": "CreateField",
       "model": "Profile",
-      "field": "User",
+      "field": "user",
       "type": "User",
       "arity": "List"
     },
@@ -629,7 +629,7 @@
         "path": {
           "tag": "Field",
           "model": "Profile",
-          "field": "User"
+          "field": "user"
         },
         "directive": "relation"
       }
@@ -641,7 +641,7 @@
         "path": {
           "tag": "Field",
           "model": "Profile",
-          "field": "User"
+          "field": "user"
         },
         "directive": "relation"
       },
@@ -651,7 +651,7 @@
     {
       "tag": "CreateField",
       "model": "Profile",
-      "field": "GroupEnrollment",
+      "field": "enrollment",
       "type": "GroupEnrollment",
       "arity": "List"
     },
@@ -739,7 +739,7 @@
       "model": "Group",
       "field": "stage",
       "type": "String",
-      "arity": "Required"
+      "arity": "Optional"
     },
     {
       "tag": "CreateField",
@@ -852,6 +852,31 @@
       }
     },
     {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Group",
+          "field": "updatedAt"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Group",
+          "field": "updatedAt"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "now()"
+    },
+    {
       "tag": "CreateField",
       "model": "Group",
       "field": "leader",
@@ -921,14 +946,7 @@
     {
       "tag": "CreateField",
       "model": "Group",
-      "field": "GroupEnrollment",
-      "type": "GroupEnrollment",
-      "arity": "List"
-    },
-    {
-      "tag": "CreateField",
-      "model": "Group",
-      "field": "Org",
+      "field": "org",
       "type": "Org",
       "arity": "Optional"
     },
@@ -938,7 +956,7 @@
         "path": {
           "tag": "Field",
           "model": "Group",
-          "field": "Org"
+          "field": "org"
         },
         "directive": "relation"
       }
@@ -950,7 +968,7 @@
         "path": {
           "tag": "Field",
           "model": "Group",
-          "field": "Org"
+          "field": "org"
         },
         "directive": "relation"
       },
@@ -964,7 +982,7 @@
         "path": {
           "tag": "Field",
           "model": "Group",
-          "field": "Org"
+          "field": "org"
         },
         "directive": "relation"
       },
@@ -981,7 +999,7 @@
     {
       "tag": "CreateField",
       "model": "Group",
-      "field": "Attendance",
+      "field": "attendances",
       "type": "Attendance",
       "arity": "List"
     },
@@ -991,7 +1009,7 @@
         "path": {
           "tag": "Field",
           "model": "Group",
-          "field": "Attendance"
+          "field": "attendances"
         },
         "directive": "relation"
       }
@@ -1003,12 +1021,19 @@
         "path": {
           "tag": "Field",
           "model": "Group",
-          "field": "Attendance"
+          "field": "attendances"
         },
         "directive": "relation"
       },
       "argument": "",
       "value": "\"AttendanceGroup\""
+    },
+    {
+      "tag": "CreateField",
+      "model": "Group",
+      "field": "enrollment",
+      "type": "GroupEnrollment",
+      "arity": "List"
     },
     {
       "tag": "CreateModel",

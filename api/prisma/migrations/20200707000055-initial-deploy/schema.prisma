@@ -1,5 +1,5 @@
 datasource DS {
-  provider = "postgresql"
+  provider = "mysql"
   url = "***"
 }
 
@@ -19,48 +19,48 @@ model User {
 }
 
 model Profile {
-  id              String            @default(cuid()) @id
-  fullName        String
-  gender          String?
-  oldId           String?           @unique
-  slug            String?           @unique
-  email           String?
-  facebookId      String?
-  phoneNumber     String?
-  birthday        DateTime?
-  joinDate        DateTime?
-  dayOfBirth      Int?
-  monthOfBirth    Int?
-  yearOfBirth     Int?
-  org             Org?              @relation("ProfileOrg", fields: [orgId], references: [id])
-  createdAt       DateTime          @default(now())
-  updatedAt       DateTime          @updatedAt
-  leader          Group[]           @relation("GroupLeader")
-  member          Group[]           @relation("GroupMembers", references: [id])
-  attendee        Attendance[]      @relation("AttendanceAttendee", references: [id])
-  absentee        Attendance[]      @relation("AttendanceAbsentee", references: [id])
-  orgId           String?
-  User            User[]            @relation("UserProfile")
-  GroupEnrollment GroupEnrollment[]
+  id           String            @default(cuid()) @id
+  fullName     String
+  gender       String?
+  oldId        String?           @unique
+  slug         String?           @unique
+  email        String?
+  facebookId   String?
+  phoneNumber  String?
+  birthday     DateTime?
+  joinDate     DateTime?
+  dayOfBirth   Int?
+  monthOfBirth Int?
+  yearOfBirth  Int?
+  org          Org?              @relation("ProfileOrg", fields: [orgId], references: [id])
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  leader       Group[]           @relation("GroupLeader")
+  member       Group[]           @relation("GroupMembers", references: [id])
+  attendee     Attendance[]      @relation("AttendanceAttendee", references: [id])
+  absentee     Attendance[]      @relation("AttendanceAbsentee", references: [id])
+  orgId        String?
+  user         User[]            @relation("UserProfile")
+  enrollment   GroupEnrollment[]
 }
 
 model Group {
-  id              String            @default(cuid()) @id
-  name            String
-  slug            String?           @unique
-  year            Int?
-  stage           String
-  members         Profile[]         @relation("GroupMembers", references: [id])
-  startAt         DateTime?
-  endAt           DateTime?
-  createdAt       DateTime          @default(now())
-  updatedAt       DateTime          @updatedAt
-  leader          Profile?          @relation("GroupLeader", fields: [leaderId], references: [id])
-  leaderId        String?
-  GroupEnrollment GroupEnrollment[]
-  Org             Org?              @relation(fields: [orgId], references: [id])
-  orgId           String?
-  Attendance      Attendance[]      @relation("AttendanceGroup")
+  id          String            @default(cuid()) @id
+  name        String
+  slug        String?           @unique
+  year        Int?
+  stage       String?
+  members     Profile[]         @relation("GroupMembers", references: [id])
+  startAt     DateTime?
+  endAt       DateTime?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt @default(now())
+  leader      Profile?          @relation("GroupLeader", fields: [leaderId], references: [id])
+  leaderId    String?
+  org         Org?              @relation(fields: [orgId], references: [id])
+  orgId       String?
+  attendances Attendance[]      @relation("AttendanceGroup")
+  enrollment  GroupEnrollment[]
 }
 
 model GroupEnrollment {

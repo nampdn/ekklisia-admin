@@ -21,9 +21,6 @@ export const createGroup = ({ input }) => {
       map: (data) => JSON.parse(data),
     },
   })
-  if (patchedInput.id) {
-    return db.group.create(patchedInput)
-  }
   return db.group.upsert({
     where: { id: patchedInput.id },
     create: patchedInput,
