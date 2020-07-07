@@ -43,9 +43,6 @@ const Activity = ({ activity }) => {
             </tr><tr>
               <th>color</th>
               <td>{activity.color}</td>
-            </tr><tr>
-              <th>orgId</th>
-              <td>{activity.orgId}</td>
             </tr>
           </tbody>
         </table>

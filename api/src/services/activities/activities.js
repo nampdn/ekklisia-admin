@@ -1,4 +1,5 @@
 import { db } from 'src/lib/db'
+import { remapRelationFields, remapFields } from 'src/lib/helpers'
 
 export const activities = () => {
   return db.activity.findMany()
@@ -10,9 +11,15 @@ export const activity = ({ id }) => {
   })
 }
 
-export const createActivity = ({ input }) => {
-  return db.activity.create({
-    data: input,
+export const createActivity = async ({ input }) => {
+  const org = await db.org.findMany({})
+  input.org = {connect: {id: org[0].id}}
+// const patchedInput = remapRelationFields(input, {
+// })
+  return db.activity.upsert({
+    where: {slug: input.slug},
+    create: input,
+    update: input
   })
 }
 

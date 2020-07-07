@@ -54,44 +54,12 @@ const ActivityForm = (props) => {
         />
         <FieldError name="name" className="rw-field-error" />
 
-        <Label
-          name="color"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Color
-        </Label>
-        <TextField
-          name="color"
-          defaultValue={props.activity?.color}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-        <FieldError name="color" className="rw-field-error" />
-
-        <Label
-          name="orgId"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Org id
-        </Label>
-        <TextField
-          name="orgId"
-          defaultValue={props.activity?.orgId}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-        <FieldError name="orgId" className="rw-field-error" />
-
         <div className="rw-button-group">
           <Submit
             disabled={props.loading}
             className="rw-button rw-button-blue"
           >
-            Save
+            Lưu Hoạt Động
           </Submit>
         </div>
       </Form>

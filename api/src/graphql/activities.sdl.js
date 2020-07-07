@@ -18,7 +18,7 @@ export const schema = gql`
     slug: String!
     name: String!
     color: String
-    orgId: String!
+    orgId: String
   }
 
   input UpdateActivityInput {

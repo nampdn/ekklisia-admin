@@ -38,7 +38,7 @@ const GroupsList = ({ groups }) => {
 
   return (
     <div className="rw-segment rw-table-wrapper-responsive">
-      <table className="rw-table">
+      <table className="rw-table overflow-y-scroll">
         <thead>
           <tr>
             <th>Tên nhóm</th>

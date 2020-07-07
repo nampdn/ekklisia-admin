@@ -4,7 +4,7 @@ import DashboardLayout from 'src/layouts/DashboardLayout'
 const ProfilesLayout = (props) => {
   return (
     <DashboardLayout>
-        <div className="rw-scaffold flex-1">
+        <div className="rw-scaffold flex-1 overflow-scroll">
           <header className="rw-header">
             <h1 className="rw-heading rw-heading-primary">
               <Link

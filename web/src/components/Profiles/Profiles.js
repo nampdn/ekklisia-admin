@@ -49,7 +49,7 @@ const ProfilesList = ({ profiles }) => {
   console.log(dayjs, profiles);
 
   return (
-    <div className="rw-segment rw-table-wrapper-responsive">
+    <div className="rw-segment rw-table-wrapper-responsive overflow-y-scroll">
       <table className="rw-table">
         <thead>
           <tr>
