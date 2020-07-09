@@ -41,18 +41,18 @@ const SchedulesList = ({ schedules }) => {
       <table className="rw-table">
         <thead>
           <tr>
-            <th>id</th>
-            <th>date</th>
-            <th>activityId</th>
+            <th>Ngày</th>
+            <th>Hoạt động</th>
+            <th>Hiện diện</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>
           {schedules.map((schedule) => (
             <tr key={schedule.id}>
-              <td>{truncate(schedule.id)}</td>
               <td>{timeTag(schedule.date)}</td>
-              <td>{truncate(schedule.activityId)}</td>
+              <td>{truncate(schedule.activity.name)}</td>
+              <td>{truncate(schedule.attendances.length || 0)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

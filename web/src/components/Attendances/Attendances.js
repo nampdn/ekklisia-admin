@@ -41,26 +41,24 @@ const AttendancesList = ({ attendances }) => {
       <table className="rw-table">
         <thead>
           <tr>
-            <th>id</th>
-            <th>slug</th>
-            <th>status</th>
-            <th>createdAt</th>
-            <th>updatedAt</th>
-            <th>groupId</th>
-            <th>scheduleId</th>
+            <th>Nhóm</th>
+            <th>Hoạt động</th>
+            <th>Nộp lúc</th>
+            <th>Cập nhật lần cuối</th>
+            <th>Hiện diện / Vắng mặt</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
         <tbody>
           {attendances.map((attendance) => (
             <tr key={attendance.id}>
-              <td>{truncate(attendance.id)}</td>
-              <td>{truncate(attendance.slug)}</td>
-              <td>{truncate(attendance.status)}</td>
+              <td>{truncate(attendance.group.name)}</td>
+              <td>{truncate(attendance.schedule.activity.name)}</td>
               <td>{timeTag(attendance.createdAt)}</td>
               <td>{timeTag(attendance.updatedAt)}</td>
-              <td>{truncate(attendance.groupId)}</td>
-              <td>{truncate(attendance.scheduleId)}</td>
+              <td>
+                {attendance.attendees.length}/{attendance.absentees.length}
+              </td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

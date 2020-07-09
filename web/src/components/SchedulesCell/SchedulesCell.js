@@ -7,7 +7,12 @@ export const QUERY = gql`
     schedules {
       id
       date
-      activityId
+      activity {
+        name
+      }
+      attendances {
+        id
+      }
     }
   }
 `

@@ -7,8 +7,8 @@ export const schema = gql`
     updatedAt: DateTime!
     group: Group!
     schedule: Schedule!
-    attendees: Profile
-    absentees: Profile
+    attendees: [Profile]
+    absentees: [Profile]
     groupId: String!
     scheduleId: String!
   }
@@ -18,10 +18,17 @@ export const schema = gql`
     attendance(id: String!): Attendance!
   }
 
+  input BulkCreateAttendancesInput {
+    groupId: String!
+    scheduleId: String!
+    attendees: [String!]
+    absentees: [String!]
+  }
+
   input CreateAttendanceInput {
     slug: String!
-    status: String!
-    updatedAt: DateTime!
+    status: String
+    updatedAt: DateTime
     groupId: String!
     scheduleId: String!
   }
@@ -35,6 +42,7 @@ export const schema = gql`
   }
 
   type Mutation {
+    bulkCreateAttendances(input: BulkCreateAttendancesInput!): Attendance!
     createAttendance(input: CreateAttendanceInput!): Attendance!
     updateAttendance(id: String!, input: UpdateAttendanceInput!): Attendance!
     deleteAttendance(id: String!): Attendance!

@@ -30,7 +30,10 @@ export const deleteOrg = ({ id }) => {
 }
 
 export const Org = {
-  groups: (_obj, { root }) => db.org.findOne({ where: { id: root.id } }).groups(),
-  activities: (_obj, { root }) => db.org.findOne({ where: { id: root.id } }).activities(),
-  profiles: (_obj, { root }) => db.org.findOne({ where: { id: root.id } }).profiles(),
+  groups: (_obj, { root }) =>
+    db.org.findOne({ where: { id: root.id } }).groups(),
+  activities: (_obj, { root }) =>
+    db.org.findOne({ where: { id: root.id } }).activities(),
+  profiles: (_obj, { root }) =>
+    db.org.findOne({ where: { id: root.id } }).profiles(),
 }

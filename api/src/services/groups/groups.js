@@ -44,9 +44,10 @@ export const deleteGroup = ({ id }) => {
   })
 }
 
-export const upsertGroup = ({ input }) => {
+export const upsertGroup = ({ id, input }) => {
   return db.group.upsert({
     where: { id },
+    data: input,
   })
 }
 

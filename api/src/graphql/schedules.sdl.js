@@ -1,7 +1,7 @@
 export const schema = gql`
   type Schedule {
     id: String!
-    attendances: Attendance
+    attendances: [Attendance]
     date: DateTime!
     activity: Activity!
     activityId: String!
@@ -13,6 +13,7 @@ export const schema = gql`
   }
 
   input CreateScheduleInput {
+    id: String
     date: DateTime!
     activityId: String!
   }

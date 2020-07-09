@@ -15,11 +15,17 @@ export const remapRelationFields = (input, fields) => {
             connect: mappedValue,
           }
         } else {
+if (typeof mappedValue === 'object') {
+          connect[fields[prop].field] = {
+            connect: mappedValue,
+          }
+} else {
           connect[fields[prop].field] = {
             connect: {
               [fields[prop].reference]: mappedValue,
             },
           }
+}
         }
       }
       delete input[prop]
