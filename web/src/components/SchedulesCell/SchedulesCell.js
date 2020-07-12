@@ -1,5 +1,4 @@
 import { Link, routes } from '@redwoodjs/router'
-
 import Schedules from 'src/components/Schedules'
 
 export const QUERY = gql`
@@ -11,7 +10,15 @@ export const QUERY = gql`
         name
       }
       attendances {
-        id
+        group {
+          name
+        }
+        attendees {
+          id
+        }
+        absentees {
+          id
+        }
       }
     }
   }
@@ -27,10 +34,7 @@ export const Empty = () => {
   return (
     <div className="rw-text-center">
       {'No schedules yet. '}
-      <Link
-        to={routes.newSchedule()}
-        className="rw-link"
-      >
+      <Link to={routes.newSchedule()} className="rw-link">
         {'Create one?'}
       </Link>
     </div>

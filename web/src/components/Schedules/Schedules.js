@@ -43,7 +43,7 @@ const SchedulesList = ({ schedules }) => {
           <tr>
             <th>Ngày</th>
             <th>Hoạt động</th>
-            <th>Hiện diện</th>
+            <th>Nhóm đã điểm danh</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -52,7 +52,7 @@ const SchedulesList = ({ schedules }) => {
             <tr key={schedule.id}>
               <td>{timeTag(schedule.date)}</td>
               <td>{truncate(schedule.activity.name)}</td>
-              <td>{truncate(schedule.attendances.length || 0)}</td>
+              <td>{truncate(schedule.attendances.length || 0)}/15</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link
