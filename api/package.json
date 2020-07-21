@@ -1,9 +1,14 @@
 {
-  "name": "api",
+  "name": "ekklisia",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
     "@redwoodjs/api": "^0.12.0",
-    "lodash": "4.17.19"
+    "lodash": "4.17.19",
+    "serverless-dotenv-plugin": "2.4.2"
+  },
+  "devDependencies": {
+    "@netlify/zip-it-and-ship-it": "^1.3.2",
+    "serverless": "^1.75.1"
   }
 }
